@@ -1,0 +1,4 @@
+lua
+*.o
+a.out
+*.so
