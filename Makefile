@@ -1,7 +1,7 @@
 #osx only
 
 CC=gcc 
-OUT=luaopenal.so
+OUT=luasampler.so
 
 LUA=lua/src/lua
 LIBLUA=lua/src/liblua.a
@@ -11,13 +11,13 @@ CATEST=a.out
 all: $(OUT) $(CATEST)
 
 $(CATEST): ca.c
-	$(CC) -framework Foundation -framework CoreAudio -framework AudioToolbox ca.c
+	$(CC) -framework Foundation -framework CoreAudio -framework AudioToolbox ca.c 
 
-$(OUT): luaopenal.o $(LIBLUA)
-	$(CC) -o $(OUT) luaopenal.o -dynamiclib $(LIBLUA)
+$(OUT): luasampler.o $(LIBLUA)
+	$(CC)  -o $(OUT) luasampler.o -dynamiclib $(LIBLUA) -framework Foundation -framework AudioToolbox 
 
-luaopenal.o: luaopenal.c
-	$(CC) -c luaopenal.c -g
+luasampler.o: luasampler.c
+	$(CC) -c luasampler.c -g 
 
 
 $(LIBLUA):

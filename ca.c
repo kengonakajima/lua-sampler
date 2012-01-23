@@ -147,11 +147,6 @@ int main( int argc, char **argv  ) {
                                  
     fprintf(stderr, "AudioQueueNewInput result: %d\n", result );
     assert(result==0);
-    
-    UInt32 size = sizeof(recFmt);
-    result = AudioQueueGetProperty( queue, kAudioConverterCurrentOutputStreamDescription, &recFmt, &size );
-    fprintf(stderr, "AudioQueueGetProperty result:%d\n", result );
-    assert(result==0);
 
     // allocate and enqueue buffers
 
