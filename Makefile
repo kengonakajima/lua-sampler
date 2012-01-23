@@ -17,7 +17,10 @@ $(OUT): luasampler.o $(LIBLUA)
 	$(CC)  -o $(OUT) luasampler.o -dynamiclib $(LIBLUA) -framework Foundation -framework AudioToolbox 
 
 pure : pure.c $(LIBLUA)
-	$(CC)  -o pure.so pure.c -dynamiclib $(LIBLUA) 
+	$(CC)  -o pure.so pure.c -dynamiclib $(LIBLUA)
+
+purelinux : pure.c $(LIBLUA)
+	$(CC) -shared -o pure.so pure.c $(LIBLUA) -ldl -fPIC
 
 
 luasampler.o: luasampler.c
